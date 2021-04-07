@@ -24,12 +24,6 @@ doc 此工程不再维护。主人已回家种菜，蔬菜多营养好，纯绿�
 ### 公共场所、禁止吸烟。
 
 
-| ![image](https://github.com/yugu88/MagicWX/blob/master/device-2020-03-25-160008.png) | ![image](https://img-blog.csdnimg.cn/20200324103336571.png) |
-| ---- | ---- |
-| ![image](https://img-blog.csdnimg.cn/20200319191809959.jpg) | ![image](https://img-blog.csdnimg.cn/2019123116334614.jpeg) |
-
-
-
 ``` nginx
 
 提示：
