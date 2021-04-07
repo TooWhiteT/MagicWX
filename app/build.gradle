@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "io.microshow.ffmpeg"
+
+        minSdkVersion 19
+        targetSdkVersion 29
+
+        versionCode 490
+        versionName "4.9.0"
+
+        multiDexEnabled true
+
+        ndk {
+            //目前已支持 "armeabi-v7a","arm64-v8a","x86","x86_64"
+            abiFilters "armeabi-v7a","arm64-v8a","x86","x86_64"
+        }
+
+    }
+
+    //签名
+    signingConfigs {
+        release {
+            storeFile file("keystore/rxffmpeg.jks")
+            storePassword "rxffmpeg2019"
+            keyAlias "rxffmpeg"
+            keyPassword "rxffmpeg2019"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            applicationIdSuffix ".debug"
+            manifestPlaceholders = [_BaiduMobAd_CHANNEL: "github-debug"]
+            //签名
+            signingConfig signingConfigs.release
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [_BaiduMobAd_CHANNEL: "github-release"]
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // Lottie是一个支持 Android、iOS 以及 ReactNative，利用json文件的方式快速实现动画效果的库。
+    implementation 'com.airbnb.android:lottie:3.4.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.4'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    implementation project(path: ':FFmpeg4.0')
+}

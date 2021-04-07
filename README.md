@@ -1,36 +1,139 @@
-# MagicWX 欢迎star，欢迎Fork
+# MagicWX
 
-#### 一键改机、微信云控、群控、多平台消息聚合，全套源码请加--QQ群号:1082517462。可破解任意app，可破解任意功能。
-
-``` nginx
-
-提示：
-doc 此工程不再维护。主人已回家种菜，蔬菜多营养好，纯绿色，无污染。
-
-说明：本人非盈利性开发，仅个人兴趣交流，但凡有兴趣的都可Fork，欢迎点击Star。禁止用于任何商业盈利。
-
-``` 
-
-## 抗击疫情、人人有责.
-
-##### 关爱自己、注意个人卫生。
-
-``` nginx
-
-群号:1046471140
-群号:1082517462
-
-``` 
-### 公共场所、禁止吸烟。
+[![](https://img.shields.io/badge/FFmpeg-4.0-yellow.svg)](http://ffmpeg.org/releases/ffmpeg-4.0.tar.bz2)
+[![](https://img.shields.io/badge/X264-20180212.2245-red.svg)](http://download.videolan.org/x264/snapshots/x264-snapshot-20180212-2245-stable.tar.bz2)
+[![](https://img.shields.io/badge/mp3lame-3.100-blue.svg)](https://jaist.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz)
+[![](https://img.shields.io/badge/fdkaac-0.1.6-orange.svg)](https://jaist.dl.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.6.tar.gz)
 
 
-``` nginx
+>MagicWX 是基于 ( FFmpeg 4.0 + X264 + mp3lame + fdk-aac + opencore-amr + openssl) 编译的适用于 Android 平台的音视频编辑、视频剪辑的快速处理框架，包含以下功能：视频拼接，转码，压缩，裁剪，片头片尾，分离音视频，变速，添加静态贴纸和gif动态贴纸，添加字幕，添加滤镜，添加背景音乐，加速减速视频，倒放音视频，**[#百变魔音#]**，音频裁剪，混音，图片合成视频，视频解码图片，抖音首页，**[#视频播放器#]**，及支持 OpenSSL https 等主流特色功能
 
-提示：
-doc 此工程不再维护。主人已回家种菜，蔬菜多营养好，纯绿色，无污染。
 
-说明：本人非盈利性开发，仅个人兴趣交流，但凡有兴趣的都可fork，欢迎点击Star。禁止用于任何商业盈利。
+# 编译环节
 
+## 编译环境
+
+  * win10 + ubuntu 16.04 + gcc + make
+
+## 主要依赖以下库进行编译
+
+| 库名        | 版本    |  下载地址  |
+| :--------   | :-----   | :---- |
+| FFmpeg        | 4.0      |   http://ffmpeg.org/releases/ffmpeg-4.0.tar.bz2    |
+| X264        | x264-snapshot-20180212-2245-stable      |   http://download.videolan.org/x264/snapshots/x264-snapshot-20180212-2245-stable.tar.bz2    |
+| mp3lame        | 3.100      |   https://jaist.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz    |
+| fdk-aac        | 0.1.6      |   https://jaist.dl.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.6.tar.gz    |
+| opencore-amr   | 0.1.5      |   https://jaist.dl.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz    |
+| ndk        | android-ndk-r10e-linux-x86_64      |   https://dl.google.com/android/repository/android-ndk-r10e-linux-x86_64.zip  |
+
+
+## 编译脚本
+
+* [编译脚本]
+
+# 特色功能
+
+| 功能        | 是否支持    |  简述  |
+| :--------   | :-----:   | :---- |
+| FFmpeg命令        | √  |   支持任何FFmpeg命令执行    |
+| FFmpeg进度回调    | √  |   支持FFmpeg命令执行进度回调    |
+| FFmpeg中断        | √  |   支持中断进行中的FFmpeg命令    |
+| 同步执行          | √  |   适用于多条命令分步执行   |
+| 异步执行          | √  |   适用于单条命令执行   |
+| Debug模式         | √  |   支持开启/关闭 Debug 模式    |
+| getMediaInfo()    | √  |   获取媒体文件详细属性信息    |
+| 平台架构          | √  |   支持 armeabi-v7a, arm64-v8a, x86, x86_64    |
+| 硬件加速          | √  |   支持硬件加速，使编解码处理更快(已开启MediaCodec)    |
+| 单个so打包        | √  |   支持把FFmpeg的各子模块打包成一个librxffmpeg-core.so核心库，无需导入七八个so库    |
+| X264              | √  |  支持libx264编码库，可以使压缩后的视频体积变的极小，清晰度还保持着很高清    |
+| mp3lame           | √  |  支持MP3音频编解码    |
+| fdk-aac           | √  |  支持AAC音频编解码    |
+| opencore-amr      | √  |  version >= 4.7.0 支持amr音频编解码(转码时需指定：-ar 8000 -ac 1)    |
+| https             | √  |   version >= 3.1.0  支持 https  |
+| 格式转换          | √  |   如: avi > mp4 > avi;  mp3 > aac > mp3 等    |
+| [自研播放器]          | √  |   RxFFmpegPlayer播放器主打轻量、高效、低功耗、视频秒开等特色   |
+| [常用命令]          | √  |   持续更新 [点击查看]   |
+
+
+
+>总结：可以看出arm64-v8a架构的运行效率远大于armeabi-v7a，强烈建议在你的App添加arm64-v8a架构的so,同时也是响应Google的号召。
+
+# 实验室
+
+## [自研视频播放器RxFFmpegPlayer]
+
+* 自研RxFFmpegPlayer播放器内核基于(FFmpeg OpenGL OpenSL)
+
+* 主打轻量级、高效、低功耗，播放本地视频秒开等特色
+
+* 涵盖播放器基本的 播放、暂停、快进、快退、音量控制、声道控制、循环播放、播放进度、加载状态等功能
+
+* 支持播放本地视频文件、在线视频、直播流(hls、rtmp、m3u8…)等
+
+* 项目里已集成OpenSSL所以也支持Https访问
+
+* 视频画面支持双指缩放、旋转、移动等手势操作
+
+* 支持切换系统MediaPlayer内核
+
+
+# 谁在用？
+
+>按登记顺序排序(供开源用户参考)，据不完整数据统计，目前已有上千款App已接入，为音视频项目赋能！
+
+[![](https://pp.myapp.com/ma_icon/0/icon_42333639_1555789191/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.hndnews.main)
+[![](https://www.hndnews.com/static/images/logo.png)](https://www.hndnews.com)
+[![](https://pp.myapp.com/ma_icon/0/icon_53292925_1558869088/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.jianyi.watermarkdog)
+[![](https://pp.myapp.com/ma_icon/0/icon_53929550_1579661691/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.cqjy.eyeschacar)
+[![](https://pp.myapp.com/ma_icon/0/icon_52859659_1558810527/96)](https://a.app.qq.com/o/simple.jsp?pkgname=com.jmhy.tool)
+[![](https://pp.myapp.com/ma_icon/0/icon_52610077_1556520138/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.kmb2b.KmMall)
+[![](https://pp.myapp.com/ma_icon/0/icon_42274023_1557972414/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.yiqizhangda.parent)
+[![](https://pp.myapp.com/ma_icon/0/icon_53871621_1563941814/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.soubo.zimujun)
+[![](https://pp.myapp.com/ma_icon/0/icon_52821569_1564999429/96)](https://sj.qq.com/myapp/detail.htm?apkName=net.youqu.dev.android.miyu)
+[![](https://pp.myapp.com/ma_icon/0/icon_53260423_1565165298/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.aiso.tea)
+[![](http://www.aniic.com/public/l/18.4d1e77d4.png)](http://www.aniic.com/share/download?tdsourcetag=s_pcqq_aiomsg)
+[![](https://pp.myapp.com/ma_icon/0/icon_42373340_1567047517/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.jycj.juyuanmeihui)
+[![](https://pp.myapp.com/ma_icon/0/icon_52743084_1555772496/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.peace.calligraphy)
+[![](https://pp.myapp.com/ma_icon/0/icon_12205109_1570448862/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.peace.guitarmusic)
+[![](https://pp.myapp.com/ma_icon/0/icon_52873563_1570726608/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.queen.oa.xt)
+[![](https://pp.myapp.com/ma_icon/0/icon_53899619_1572422746/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.shifenkexue.appscience)
+[![](https://pp.myapp.com/ma_icon/0/icon_53923023_1570761579/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.sixsix.call)
+[![](https://pp.myapp.com/ma_icon/0/icon_54022753_1585815499/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.bigtotoro.shuiyincamera)
+[![](https://pp.myapp.com/ma_icon/0/icon_54017775_1585724965/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.yuanli.mvpaudioextraction)
+[![](https://pp.myapp.com/ma_icon/0/icon_52517100_1581646762/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.yuan_li_network.texttospeechyuanli)
+[![](https://pp.myapp.com/ma_icon/0/icon_52745305_1585818590/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.zhouzining.yyxc)
+[![](https://pp.myapp.com/ma_icon/0/icon_53332875_1586397821/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.shockwv.nevermore)
+[![](https://pp.myapp.com/ma_icon/0/icon_52762584_1586228655/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.yz.live)
+[![](https://pp.myapp.com/ma_icon/0/icon_52649928_1583549532/96)](https://sj.qq.com/myapp/detail.htm?apkName=scs.com.crosscountry)
+[![](https://upload.jianshu.io/collections/images/1866835/80.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240)](https://www.vivhist.com/)
+[![](https://pp.myapp.com/ma_icon/0/icon_52761428_1595596053/96)](https://sj.qq.com/myapp/detail.htm?apkName=sulisong.ShelledPro.Screenshots)
+<img src="http://image.coolapk.com/apk_logo/2019/0317/22/500px-219205-o_1d662al3g3ufvge8v51odk1iimq-uid-1030107@500x500.png" alt="https://www.coolapk.com/apk/yanyan.com.tochar" width="96px"></img>
+[![](https://pp.myapp.com/ma_icon/0/icon_53947191_1592382950/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.koki.callshow)
+[![](https://pp.myapp.com/ma_icon/0/icon_54047992_1600306987/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.spqsymf.app.them)
+[![](https://pp.myapp.com/ma_icon/0/icon_54014901_1589092180/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.mzxf.funchild)
+[![](https://pp.myapp.com/ma_icon/0/icon_53800886_1593572867/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.smallyin.fastcompre)
+[![](https://pp.myapp.com/ma_icon/0/icon_54063638_1595986594/96)](https://sj.qq.com/myapp/detail.htm?apkName=com.ym.screenrecorder)
+
+# 常用命令
+
+### * [FFmpeg文档汇总](https://ffmpeg.org/documentation.html)
+### * [FFmpeg Filters文档](https://ffmpeg.org/ffmpeg-filters.html)
+
+
+# License
+
+```text
+Copyright 2021 
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
-
-
